@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lists and Tables</title>
+    <title>Dynamic List and Table</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,68 +60,125 @@
         tr:nth-child(even) td {
             background-color: #f1f1f1;
         }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        .form-container {
+            text-align: center;
+        }
+
+        .form-container input, .form-container button {
+            width: 200px;
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
 
-        <h1>HTML Lists and Tables Example</h1>
+        <h1>Dynamic List and Table Example</h1>
 
-        <!-- Unordered List (Bullets) -->
-        <h2>Unordered List (Bullets)</h2>
-        <ul>
-            <li>Item 1: Apples</li>
-            <li>Item 2: Oranges</li>
-            <li>Item 3: Bananas</li>
-            <li>Item 4: Grapes</li>
+        <!-- Add Data to Bulleted List -->
+        <h2>Add Items to the List</h2>
+        <div class="form-container">
+            <input type="text" id="listItemInput" placeholder="Enter item">
+            <button onclick="addListItem()">Add Item</button>
+        </div>
+        <ul id="itemList">
+            <!-- Dynamic items will be added here -->
         </ul>
 
-        <!-- Ordered List (Numbers) -->
-        <h2>Ordered List (Numbers)</h2>
-        <ol>
-            <li>Step 1: Preheat the oven to 350°F.</li>
-            <li>Step 2: Mix flour and sugar.</li>
-            <li>Step 3: Add eggs and stir.</li>
-            <li>Step 4: Bake for 25 minutes.</li>
-        </ol>
+        <h2>Add Employee to the Table</h2>
+        <div class="form-container">
+            <input type="text" id="employeeId" placeholder="Employee ID">
+            <input type="text" id="employeeName" placeholder="Employee Name">
+            <input type="text" id="employeeDept" placeholder="Department">
+            <input type="text" id="employeeSalary" placeholder="Salary">
+            <button onclick="addEmployee()">Add Employee</button>
+        </div>
 
-        <!-- Table Format Data -->
-        <h2>Table Format Data</h2>
-        <table>
+        <!-- Employee Table -->
+        <table id="employeeTable">
             <tr>
                 <th>Employee ID</th>
                 <th>Name</th>
                 <th>Department</th>
                 <th>Salary</th>
             </tr>
-            <tr>
-                <td>101</td>
-                <td>Alice Smith</td>
-                <td>HR</td>
-                <td>$55,000</td>
-            </tr>
-            <tr>
-                <td>102</td>
-                <td>Bob Johnson</td>
-                <td>Marketing</td>
-                <td>$60,000</td>
-            </tr>
-            <tr>
-                <td>103</td>
-                <td>Charlie Lee</td>
-                <td>Sales</td>
-                <td>$70,000</td>
-            </tr>
-            <tr>
-                <td>104</td>
-                <td>David Brown</td>
-                <td>Engineering</td>
-                <td>$85,000</td>
-            </tr>
+            <!-- Dynamic rows will be added here -->
         </table>
 
     </div>
+
+    <script>
+        // Function to add item to the bullet list
+        function addListItem() {
+            const listItemInput = document.getElementById("listItemInput");
+            const itemText = listItemInput.value;
+
+            if (itemText) {
+                const ul = document.getElementById("itemList");
+
+                // Create a new list item and append it to the list
+                const li = document.createElement("li");
+                li.textContent = itemText;
+                ul.appendChild(li);
+
+                // Clear input field after adding
+                listItemInput.value = "";
+            } else {
+                alert("Please enter an item!");
+            }
+        }
+
+        // Function to add employee to the table
+        function addEmployee() {
+            const employeeId = document.getElementById("employeeId").value;
+            const employeeName = document.getElementById("employeeName").value;
+            const employeeDept = document.getElementById("employeeDept").value;
+            const employeeSalary = document.getElementById("employeeSalary").value;
+
+            if (employeeId && employeeName && employeeDept && employeeSalary) {
+                const table = document.getElementById("employeeTable");
+
+                // Create a new row
+                const tr = document.createElement("tr");
+
+                // Create and append table cells
+                const td1 = document.createElement("td");
+                td1.textContent = employeeId;
+                tr.appendChild(td1);
+
+                const td2 = document.createElement("td");
+                td2.textContent = employeeName;
+                tr.appendChild(td2);
+
+                const td3 = document.createElement("td");
+                td3.textContent = employeeDept;
+                tr.appendChild(td3);
+
+                const td4 = document.createElement("td");
+                td4.textContent = employeeSalary;
+                tr.appendChild(td4);
+
+                // Append the new row to the table
+                table.appendChild(tr);
+
+                // Clear input fields after adding
+                document.getElementById("employeeId").value = "";
+                document.getElementById("employeeName").value = "";
+                document.getElementById("employeeDept").value = "";
+                document.getElementById("employeeSalary").value = "";
+            } else {
+                alert("Please fill in all fields!");
+            }
+        }
+    </script>
 
 </body>
 </html>
