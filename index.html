@@ -3,54 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic List and Table</title>
+    <title>Sports Info</title>
     <style>
+        /* General Page Styling */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
             margin: 0;
             padding: 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            color: #4CAF50;
-        }
-
-        h2 {
             color: #333;
         }
 
-        ul, ol {
-            font-size: 18px;
-            line-height: 1.8;
+        h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #4CAF50;
+            margin-bottom: 20px;
         }
 
+        h3 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        /* List and Table Styling */
+        ul, ol {
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+            width: 80%;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li, ol li {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        ul li:hover, ol li:hover {
+            background-color: #f2f2f2;
+        }
+
+        /* Input & Button Styling */
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, button:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input {
+            width: 250px;
+        }
+
+        /* Table Styling */
         table {
-            width: 100%;
-            margin-top: 30px;
+            width: 80%;
+            margin: 30px auto;
             border-collapse: collapse;
-            font-size: 18px;
-            text-align: left;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         th, td {
             padding: 12px;
+            text-align: center;
             border: 1px solid #ddd;
         }
 
         th {
             background-color: #4CAF50;
             color: white;
+            cursor: pointer;
+            font-size: 1.1em;
         }
 
         td {
@@ -58,125 +105,101 @@
         }
 
         tr:nth-child(even) td {
-            background-color: #f1f1f1;
+            background-color: #f2f2f2;
         }
 
-        input, button {
-            padding: 10px;
-            margin: 5px;
-            font-size: 16px;
+        tr:hover td {
+            background-color: #e9f7e7;
         }
 
-        .form-container {
-            text-align: center;
-        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table, ul, ol {
+                width: 100%;
+            }
 
-        .form-container input, .form-container button {
-            width: 200px;
-            margin: 10px;
+            input {
+                width: 100%;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <h2>Sports and Training</h2>
 
-        <h1>Dynamic List and Table Example</h1>
+    <h3>Popular Sports</h3>
+    <ul id="sports-list">
+        <li>Cricket</li>
+        <li>Basketball</li>
+        <li>Tennis</li>
+    </ul>
+    <input id="newSport" placeholder="Enter sport">
+    <button onclick="addItem('sports-list', 'newSport')">Add</button>
 
-        <!-- Add Data to Bulleted List -->
-        <h2>Add Items to the List</h2>
-        <div class="form-container">
-            <input type="text" id="listItemInput" placeholder="Enter item">
-            <button onclick="addListItem()">Add Item</button>
-        </div>
-        <ul id="itemList">
-            <!-- Dynamic items will be added here -->
-        </ul>
+    <h3>Training Steps</h3>
+    <ol id="training-steps">
+        <li>Regular Practice</li>
+        <li>Strength & Conditioning</li>
+    </ol>
+    <input id="newStep" placeholder="Enter step">
+    <button onclick="addItem('training-steps', 'newStep')">Add</button>
 
-        <h2>Add Employee to the Table</h2>
-        <div class="form-container">
-            <input type="text" id="employeeId" placeholder="Employee ID">
-            <input type="text" id="employeeName" placeholder="Employee Name">
-            <input type="text" id="employeeDept" placeholder="Department">
-            <input type="text" id="employeeSalary" placeholder="Salary">
-            <button onclick="addEmployee()">Add Employee</button>
-        </div>
+    <h3>Sports Comparison</h3>
+    <table id="sports-table">
+        <tr>
+            <th onclick="sortTable(0)">Sport</th>
+            <th onclick="sortTable(1)">Type</th>
+            <th onclick="sortTable(2)">Players</th>
+        </tr>
+        <tr><td>Cricket</td><td>Team</td><td>11</td></tr>
+        <tr><td>Tennis</td><td>Individual</td><td>1-2</td></tr>
+    </table>
 
-        <!-- Employee Table -->
-        <table id="employeeTable">
-            <tr>
-                <th>Employee ID</th>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Salary</th>
-            </tr>
-            <!-- Dynamic rows will be added here -->
-        </table>
-
-    </div>
+    <h3>Add Sport</h3>
+    <input id="sport" placeholder="Sport"> 
+    <input id="type" placeholder="Type"> 
+    <input id="players" placeholder="Players"> 
+    <button onclick="addSport()">Add</button>
 
     <script>
-        // Function to add item to the bullet list
-        function addListItem() {
-            const listItemInput = document.getElementById("listItemInput");
-            const itemText = listItemInput.value;
-
-            if (itemText) {
-                const ul = document.getElementById("itemList");
-
-                // Create a new list item and append it to the list
-                const li = document.createElement("li");
-                li.textContent = itemText;
-                ul.appendChild(li);
-
-                // Clear input field after adding
-                listItemInput.value = "";
-            } else {
-                alert("Please enter an item!");
-            }
+        function addItem(listId, inputId) {
+            let input = document.getElementById(inputId);
+            if (input.value.trim()) {
+                let li = document.createElement("li");
+                li.textContent = input.value;
+                document.getElementById(listId).appendChild(li);
+                input.value = "";
+            } else alert("Enter valid input!");
         }
 
-        // Function to add employee to the table
-        function addEmployee() {
-            const employeeId = document.getElementById("employeeId").value;
-            const employeeName = document.getElementById("employeeName").value;
-            const employeeDept = document.getElementById("employeeDept").value;
-            const employeeSalary = document.getElementById("employeeSalary").value;
+        function addSport() {
+            let table = document.getElementById("sports-table");
+            let sport = document.getElementById("sport").value;
+            let type = document.getElementById("type").value;
+            let players = document.getElementById("players").value;
+            if (sport && type && players) {
+                let row = table.insertRow();
+                row.innerHTML = `<td>${sport}</td><td>${type}</td><td>${players}</td>`;
+                document.getElementById("sport").value = "";
+                document.getElementById("type").value = "";
+                document.getElementById("players").value = "";
+            } else alert("Fill all fields!");
+        }
 
-            if (employeeId && employeeName && employeeDept && employeeSalary) {
-                const table = document.getElementById("employeeTable");
-
-                // Create a new row
-                const tr = document.createElement("tr");
-
-                // Create and append table cells
-                const td1 = document.createElement("td");
-                td1.textContent = employeeId;
-                tr.appendChild(td1);
-
-                const td2 = document.createElement("td");
-                td2.textContent = employeeName;
-                tr.appendChild(td2);
-
-                const td3 = document.createElement("td");
-                td3.textContent = employeeDept;
-                tr.appendChild(td3);
-
-                const td4 = document.createElement("td");
-                td4.textContent = employeeSalary;
-                tr.appendChild(td4);
-
-                // Append the new row to the table
-                table.appendChild(tr);
-
-                // Clear input fields after adding
-                document.getElementById("employeeId").value = "";
-                document.getElementById("employeeName").value = "";
-                document.getElementById("employeeDept").value = "";
-                document.getElementById("employeeSalary").value = "";
-            } else {
-                alert("Please fill in all fields!");
-            }
+        function sortTable(col) {
+            let table = document.getElementById("sports-table");
+            let rows = Array.from(table.rows).slice(1);
+            rows.sort((a, b) => a.cells[col].textContent.localeCompare(b.cells[col].textContent));
+            rows.forEach(row => table.appendChild(row));
         }
     </script>
 
