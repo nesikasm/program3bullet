@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists and Tables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul, ol {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>HTML Lists and Tables Example</h1>
+
+        <!-- Unordered List (Bullets) -->
+        <h2>Unordered List (Bullets)</h2>
+        <ul>
+            <li>Item 1: Apples</li>
+            <li>Item 2: Oranges</li>
+            <li>Item 3: Bananas</li>
+            <li>Item 4: Grapes</li>
+        </ul>
+
+        <!-- Ordered List (Numbers) -->
+        <h2>Ordered List (Numbers)</h2>
+        <ol>
+            <li>Step 1: Preheat the oven to 350°F.</li>
+            <li>Step 2: Mix flour and sugar.</li>
+            <li>Step 3: Add eggs and stir.</li>
+            <li>Step 4: Bake for 25 minutes.</li>
+        </ol>
+
+        <!-- Table Format Data -->
+        <h2>Table Format Data</h2>
+        <table>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Salary</th>
+            </tr>
+            <tr>
+                <td>101</td>
+                <td>Alice Smith</td>
+                <td>HR</td>
+                <td>$55,000</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Bob Johnson</td>
+                <td>Marketing</td>
+                <td>$60,000</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Charlie Lee</td>
+                <td>Sales</td>
+                <td>$70,000</td>
+            </tr>
+            <tr>
+                <td>104</td>
+                <td>David Brown</td>
+                <td>Engineering</td>
+                <td>$85,000</td>
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+</html>
